@@ -36,9 +36,7 @@ def sendQuery(query=""):
     # Wait for the results to load
     import time
     time.sleep(5)  # Adjust this delay based on your internet speed
-    # divSideBar=driver.find_element(By.CSS_SELECTOR,f"div[aria-label='Results for {query}']")
     currentUrl = driver.current_url
-    # return search_box, query, divSideBar
     return currentUrl
     print("Searching for restaurants...")
 
