@@ -79,8 +79,6 @@ def scroll_panel_with_page_down(driver, panel_xpath, presses, pause_time):
 
 # XPath to the main panel where addresses are displayed
 panel_xpath = "//*[@id='QA0Szd']/div/div/div[1]/div[2]/div"
-# //*[@id='QA0Szd']/div/div/div[1]/div[2]/div"
-# //*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[1]/div[1]
 
 # Scroll down within the main panel
 # scroll_panel_with_page_down(driver, panel_xpath, presses=20, pause_time=1)
@@ -90,15 +88,12 @@ scroll_panel_with_page_down(driver, panel_xpath, presses=20, pause_time=5)
 addresses = driver.find_elements(By.CLASS_NAME, 'hfpxzc')
 
 page_source = driver.page_source
-# print(page_source)
 # Parse with BeautifulSoup
 soup = BeautifulSoup(page_source, "html.parser")
-
 
 # For addresses and restaurant info
 data_containers = soup.find_all("a", class_="hfpxzc")
 cuisine = soup.find_all("div", class_="W4Efsd")
-
 
 # Close the Selenium WebDriver
 driver.quit()
@@ -117,7 +112,6 @@ for address in cuisine:
         continue
     elif len(cuisineType) == 4:
         restaurantInfo.append(cuisineType)
-        # print(cuisineType)
 
 # Dedupe restaurant info
 restaurantInfo.sort()
