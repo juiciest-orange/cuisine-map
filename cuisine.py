@@ -16,6 +16,7 @@ import csv  # For working with CSV files
 # Setting up Chrome options
 chrome_options = Options()
 # chrome_options.add_argument("--headless")  # Ensure GUI is off
+chrome_options.add_argument("--window-position=-2400,-2400")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
@@ -118,13 +119,14 @@ restaurantInfo= list(k for k,_ in itertools.groupby(restaurantInfo))
 restaurantCuisine = []
 restaurantAddress = []
 for r in restaurantInfo:
+    # print(r)
     restaurantCuisine.append(r[0])
     restaurantAddress.append(r[3])
 
-restaurantDf = pd.DataFrame(columns=['name','cuisine','address','city'])
-restaurantDf['name'] = restuarantNames
-restaurantDf['cuisine'] = restaurantCuisine
-restaurantDf['address'] = restaurantAddress
-restaurantDf['city'] = city
 
-print(restaurantDf)
+with open('restaurantNames.txt', 'w') as file:
+    for i in restuarantNames:
+        i + ", " + city
+        file.write(i + ", " + city + "\n")
+    file.close()
+print("Wrote %s restaurant names to restaurantNames.txt" %len(restuarantNames))
