@@ -58,16 +58,17 @@ def searchCuisine(filepath=""):
         # Extract and print cuisine
         cuisine = driver.find_elements(By.XPATH, '//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/span[1]/span/button')
         for button in cuisine:
-            print(button.text)
+            # print(button.text)
             buttonTexts.append(button.text)
+            continue
     return buttonTexts
 
-cuisineList = searchCuisine("restaurantNames.txt")
+cuisineList = searchCuisine("restaurantListTest.txt")
 
 print(len(cuisineList))
 
 with open('restaurantCuisine.txt', 'w') as file:
     for i in cuisineList:
         print(i)
-        file.writelines(i)
+        file.writelines(i+"\n")
     file.close()
