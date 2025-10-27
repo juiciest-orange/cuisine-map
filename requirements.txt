@@ -1,0 +1,13 @@
+# scraping
+selenium>=4.0.0
+beautifulsoup4>=4.9.3
+
+# data processing
+pandas>=1.3.0
+
+# geocoding and mapping
+pgeocode>=0.3.0
+folium>=0.12.0
+
+# utilities
+lxml>=4.6.0
